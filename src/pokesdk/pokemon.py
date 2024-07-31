@@ -11,7 +11,7 @@ class Pokemon:
         self.client = client
         self.page_limit = page_limit
 
-    def get_info(self, id_or_name: str = None):
+    def get_info(self, id_or_name=None):
         if id_or_name:
             data = get_request(self.client, f'{self.base_url}/{id_or_name}')
         else:
