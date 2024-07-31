@@ -9,4 +9,4 @@ class GenericResource(object):
             setattr(self, key, dictionary[key])
 
     def __repr__(self):
-        return "<dict2obj: %s>" % self.__dict__
+        return "<GenericResource: %s>" % self.__dict__
