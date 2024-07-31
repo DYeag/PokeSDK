@@ -112,3 +112,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+src/pokesdk/testing.py
+src/pokesdk/testing.py
