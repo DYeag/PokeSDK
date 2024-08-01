@@ -83,20 +83,20 @@ I separated the main potions of the SDK into 4 classes.
 4. The GenericResource class
 This was done so that related portions of the SDK can be handled per file for organization and cleanliness.
 
-#####The SDK Class
+##### The SDK Class
 This class is the one users will initialize, and will handle the initialization of the underlying Pokemon and Generation objects.
 This class creates and configures the requests session for the underlying objects to use for making API calls as well as holds some generic information such as the base_url for the PokeAPI and the page_limit.
 It is done this way to make it easy for users to create/interact with the object. Also to keep the session creation/configuration in one place so the effort is not duplicated later.
 
-#####The Pokemon Class
+##### The Pokemon Class
 This class is for interacting with the pokemon API endpoints: https://pokeapi.co/api/v2/pokemon/
 I've simplified the usage by having only a single method on the class that gives a list of pokemon or a specific one based on the input paramter, id, name or empty.
 
-#####The Generation Class
+##### The Generation Class
 This class is for interacting with the generation API endpoints: https://pokeapi.co/api/v2/generation/
 I've simplified the usage by having only a single method on the class that gives a list of generations or a specific one based on the input paramter, id, name or empty.
 
-#####The GenericResource Class
+##### The GenericResource Class
 This class simply creates a custom python object based on the dictionaries returned by the PokeAPI.
 Simplifies usage by allowing users to access info as properties instead of needing to access everything through a dictionary.
 ```python
@@ -112,16 +112,16 @@ print(bulbasaur["name"]) # Instead of like this
 
 ```
 
-####Pagination
+#### Pagination
 The requirements doc mentioned pagination. I saw that the pagination was limited at 20 by default with the PokeAPI, so i have kept that as the default.
 However users can intialize the PokeSDK with an integer input that changes the page limit to that number. This can be seen with both the pokemon and generation get_info methods.
 The underlying hadling of the pagination is within the common.py file, you will see a get_request and a get_paged_request depending on whether the API call being made is for multiple pokemon/generations or a single.
 
-####Python modules used
+#### Python modules used
 I tried to use mostly default python modules, i did use the standard python requests module for the API calls.
 And other than that, just the unittest module for the tests that reach out and verify API responses.
 
-####Retries
+#### Retries
 As this API is fairly simple, not requiring authentication. I did add retries to the PokeSDK class in sdk.py.
 This was more to show that this PokeSDK class is where the API session object would be configured, and it would make more sense for something like authentication.
 Since i believe the requests module already has builtin retries.
